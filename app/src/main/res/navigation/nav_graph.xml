@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/bars_fragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.example.zadanie.ui.fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/bars_fragment"
+        android:name="com.example.zadanie.ui.fragments.BarsFragment"
+        android:label="BarsFragment"
+        tools:layout="@layout/fragment_bars" />
+    <fragment
+        android:id="@+id/sign_up_fragment"
+        android:name="com.example.zadanie.ui.fragments.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/locate_fragment"
+        android:name="com.example.zadanie.ui.fragments.LocateFragment"
+        android:label="LocateFragment"
+        tools:layout="@layout/fragment_locate"/>
+
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.example.zadanie.ui.fragments.BarDetailFragment"
+        android:label="BarDetailFragment"
+        tools:layout="@layout/fragment_detail_bar">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="users"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_friend_fragment"
+        android:name="com.example.zadanie.ui.fragments.AddFriendFragment"
+        android:label="AddFriendFragment"
+        tools:layout="@layout/fragment_add_friend"/>
+    <fragment
+        android:id="@+id/friends_fragment"
+        android:name="com.example.zadanie.ui.fragments.FriendsFragment"
+        android:label="FriendsFragment"
+        tools:layout="@layout/fragment_friends"/>
+
+    <action
+        android:id="@+id/action_to_login"
+        app:destination="@id/login_fragment" />
+    <action
+        android:id="@+id/action_to_sign_up"
+        app:destination="@id/sign_up_fragment" />
+    <action
+        android:id="@+id/action_to_bars"
+        app:destination="@id/bars_fragment" />
+    <action
+        android:id="@+id/action_to_locate"
+        app:destination="@id/locate_fragment" />
+    <action
+        android:id="@+id/action_to_detail"
+        app:destination="@id/detail_fragment" />
+    <action
+        android:id="@+id/action_to_add_friend"
+        app:destination="@+id/add_friend_fragment" />
+    <action
+        android:id="@+id/action_to_friends"
+        app:destination="@+id/friends_fragment" />
+
+</navigation>

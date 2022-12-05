@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Zadanie</string>
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_login">Login</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="action_sign_up">Sign up </string>
+    <string name="login_sign_up">"Sign up failed"</string>
+    <string name="or_log_in">or log in</string>
+    <string name="or_create_account">or create account.</string>
+    <string name="bars">Bars</string>
+    <string name="log_out">Log out</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="back">back</string>
+    <string name="show_on_map">Show on Map</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_friends">Add Friends</string>
+    <string name="friends">Friends</string>
+    <string name="check_in">Check in</string>
+    <string name="i_m_here">I\'m here</string>
+    <string name="distance">Distance</string>
+    <string name="count">Count</string>
+    <string name="name">Name</string>
+    <string name="people_count">People: %s</string>
+    <string name="default_sort">Default</string>
+    <string name="home">Home</string>
+    <string name="friend">Friend</string>
+
+</resources>
