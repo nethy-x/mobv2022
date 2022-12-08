@@ -11,21 +11,11 @@ import com.example.zadanie.ui.fragments.BarsFragmentDirections
 
 class BarsRecyclerView : RecyclerView {
     private lateinit var barsAdapter: BarsAdapter
-    /**
-     * Default constructor
-     *
-     * @param context context for the activity
-     */
+
     constructor(context: Context) : super(context) {
         init(context)
     }
 
-    /**
-     * Constructor for XML layout
-     *
-     * @param context activity context
-     * @param attrs   xml attributes
-     */
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context)
     }

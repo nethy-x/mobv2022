@@ -65,7 +65,7 @@ class LocateFragment : Fragment() {
         viewmodel = ViewModelProvider(
             this,
             Injection.provideViewModelFactory(requireContext())
-        ).get(LocateViewModel::class.java)
+        )[LocateViewModel::class.java]
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         geofencingClient = LocationServices.getGeofencingClient(requireActivity())
@@ -132,6 +132,7 @@ class LocateFragment : Fragment() {
         }
         viewmodel.loading.observe(viewLifecycleOwner) {
             binding.swiperefresh.isRefreshing = it
+
         }
         viewmodel.checkedIn.observe(viewLifecycleOwner) {
             it?.getContentIfNotHandled()?.let {

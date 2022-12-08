@@ -27,12 +27,15 @@ class BarsViewModel(private val repository: DataRepository): ViewModel() {
 
     init {
         viewModelScope.launch {
+            loading.postValue(true)
             val barsFromDb = repository.dbBars(isAsc, SortBy.DEFAULT)
             if (barsFromDb == null || barsFromDb.isEmpty()) {
                 refreshData()
             } else {
                 _bars.postValue(barsFromDb)
             }
+            loading.postValue(false)
+
         }
     }
 

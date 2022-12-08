@@ -21,12 +21,14 @@ class FriendsViewModel(private val repository: DataRepository): ViewModel() {
 
     init {
         viewModelScope.launch {
+            loading.postValue(true)
             val friendsFromDb = repository.dbFriends()
             if (friendsFromDb == null || friendsFromDb.isEmpty()) {
                 refreshData()
             } else {
                 _friends.postValue(friendsFromDb)
             }
+            loading.postValue(false)
         }
     }
 

@@ -65,6 +65,7 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:contentDescription="@string/icon"
             android:src="@drawable/person_pin" />
 
     </RelativeLayout>

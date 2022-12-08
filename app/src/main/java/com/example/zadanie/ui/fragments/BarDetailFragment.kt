@@ -16,6 +16,8 @@ import com.example.zadanie.databinding.FragmentDetailBarBinding
 import com.example.zadanie.utils.Injection
 import com.example.zadanie.utils.PreferenceData
 import com.example.zadanie.ui.viewmodels.DetailViewModel
+import com.mapbox.geojson.Point
+import com.mapbox.maps.CameraOptions
 
 class BarDetailFragment : Fragment() {
     private var _binding: FragmentDetailBarBinding? = null
@@ -32,7 +34,7 @@ class BarDetailFragment : Fragment() {
         viewModel = ViewModelProvider(
             this,
             Injection.provideViewModelFactory(requireContext())
-        ).get(DetailViewModel::class.java)
+        )[DetailViewModel::class.java]
         id = arguments?.getString("id").toString()
     }
 
@@ -54,6 +56,7 @@ class BarDetailFragment : Fragment() {
             return
         }
 
+
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             model = viewModel
@@ -70,6 +73,15 @@ class BarDetailFragment : Fragment() {
                     else -> false
                 }
             }
+            viewModel.bar.observe(viewLifecycleOwner){
+
+                val cameraPosition = CameraOptions.Builder()
+                    .center(Point.fromLngLat(it?.lon ?: 0.0, it?.lat ?: 0.0 ))
+                    .zoom(18.0)
+                    .build()
+                bnd.mapView.getMapboxMap().setCamera(cameraPosition)
+            }
+
             bnd.mapButton.setOnClickListener {
                 startActivity(
                     Intent(
@@ -86,6 +98,14 @@ class BarDetailFragment : Fragment() {
         }
         viewModel.loadBar(id)
         viewModel.getUsers(id)
+        viewModel.message.observe(viewLifecycleOwner) {
+            if (PreferenceData.getInstance().getUserItem(requireContext()) == null) {
+                nav.navigate(R.id.action_to_login)
+            }
+        }
+
+
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

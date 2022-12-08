@@ -28,7 +28,7 @@ class AddFriendFragment : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this,
             Injection.provideViewModelFactory(requireContext())
-        ).get(AddFriendsViewModel::class.java)
+        )[AddFriendsViewModel::class.java]
 
     }
 

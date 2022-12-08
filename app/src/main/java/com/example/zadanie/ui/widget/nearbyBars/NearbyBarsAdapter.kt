@@ -1,5 +1,6 @@
 package com.example.zadanie.ui.widget.nearbyBars
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ class NearbyBarsAdapter(val events: NearbyBarsEvents? = null) :
             false)
         ) : RecyclerView.ViewHolder(itemView){
 
+        @SuppressLint("SetTextI18n")
         fun bind(item: NearbyBar, events: NearbyBarsEvents? = null) {
             itemView.findViewById<TextView>(R.id.name).text = item.name
             itemView.findViewById<TextView>(R.id.distance).text = "%.2f m".format(item.distance)

@@ -12,9 +12,9 @@ class DetailViewModel(private val repository: DataRepository) : ViewModel() {
     val message: LiveData<Evento<String>>
         get() = _message
 
-    val loading = MutableLiveData(false)
+    val loading = MutableLiveData(true)
     val user = MutableLiveData<Int>(null)
-    val bar = MutableLiveData<NearbyBar>(null)
+    val bar = MutableLiveData<NearbyBar?>(null)
     val type = bar.map { it?.tags?.getOrDefault("amenity", "") ?: "" }
     val details: LiveData<List<BarDetailItem>> = bar.switchMap {
         liveData {
@@ -30,9 +30,7 @@ class DetailViewModel(private val repository: DataRepository) : ViewModel() {
         if (id.isBlank())
             return
         viewModelScope.launch {
-            loading.postValue(true)
             user.postValue(repository.dbUsersByBarId(id))
-            loading.postValue(false)
         }
     }
 
@@ -45,4 +43,6 @@ class DetailViewModel(private val repository: DataRepository) : ViewModel() {
             loading.postValue(false)
         }
     }
+
+    fun show(msg: String){ _message.postValue(Evento(msg))}
 }

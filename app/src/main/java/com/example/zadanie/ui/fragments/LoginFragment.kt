@@ -1,11 +1,9 @@
 package com.example.zadanie.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -31,7 +29,7 @@ class LoginFragment : Fragment() {
         authViewModel = ViewModelProvider(
             this,
             Injection.provideViewModelFactory(requireContext())
-        ).get(AuthViewModel::class.java)
+        )[AuthViewModel::class.java]
         activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.visibility =
             View.INVISIBLE
     }

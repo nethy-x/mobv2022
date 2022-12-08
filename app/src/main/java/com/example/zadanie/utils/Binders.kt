@@ -5,8 +5,7 @@ import android.widget.Toast
 import androidx.databinding.BindingAdapter
 
 @BindingAdapter(
-    "showTextToast"
-)
+    "showTextToast")
 fun applyShowTextToast(
     view: View,
     message: Evento<String>?

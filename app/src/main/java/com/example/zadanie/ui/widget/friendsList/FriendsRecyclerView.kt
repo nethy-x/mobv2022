@@ -12,21 +12,11 @@ import com.example.zadanie.ui.fragments.FriendsFragmentDirections
 
 class FriendsRecyclerView : RecyclerView {
     private lateinit var friendsAdapter: FriendsAdapter
-    /**
-     * Default constructor
-     *
-     * @param context context for the activity
-     */
+
     constructor(context: Context) : super(context) {
         init(context)
     }
 
-    /**
-     * Constructor for XML layout
-     *
-     * @param context activity context
-     * @param attrs   xml attributes
-     */
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context)
     }

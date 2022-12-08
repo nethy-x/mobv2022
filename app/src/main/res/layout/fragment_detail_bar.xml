@@ -6,11 +6,13 @@
         <variable
             name="model"
             type="com.example.zadanie.ui.viewmodels.DetailViewModel" />
+
         <variable
             name="navController"
             type="androidx.navigation.NavController" />
 
         <import type="android.view.View" />
+
     </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
@@ -35,6 +37,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="30dp">
@@ -46,74 +49,76 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
                 android:paddingBottom="8dp"
+                android:text="@{model.user.toString()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="@{model.user.toString()}"
                 tools:text="Count" />
 
             <RelativeLayout
                 android:id="@+id/type_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/header_title"
+                android:background="@drawable/blue_border_rounded_corner"
                 app:layout_constraintStart_toStartOf="parent"
-                android:background="@drawable/blue_border_rounded_corner">
+                app:layout_constraintTop_toBottomOf="@id/header_title">
 
                 <TextView
                     android:id="@+id/type"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/contentTextColor"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
                     style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
                     android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="10dp"
                     android:text="@{model.type}"
-                    android:textSize="12sp" />
+                    android:textColor="@color/contentTextColor"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
             </RelativeLayout>
 
+                        <com.mapbox.maps.MapView
+                            android:id="@+id/mapView"
+                            android:layout_width="409dp"
+                            android:layout_height="172dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/type_container"
+                            app:mapbox_cameraTargetLat="0"
+                            app:mapbox_cameraTargetLng="0"
+                            app:mapbox_cameraZoom="18.0" />
+
             <com.example.zadanie.ui.widget.detailList.DetailRecyclerView
+                android:id="@+id/recycleView"
                 detail_items="@{model.details}"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="55dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/type_container" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:visibility="@{model.loading ? View.VISIBLE : View.INVISIBLE}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.409" />
+                app:layout_constraintTop_toBottomOf="@id/mapView" />
 
             <ImageButton
                 android:id="@+id/mapButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
                 android:layout_marginBottom="50dp"
-                android:visibility="@{model.loading ? View.INVISIBLE : View.VISIBLE}"
-                android:text="@string/show_on_map"
-                android:src="@drawable/ic_baseline_location_on_24"
                 android:background="@drawable/circle_filled"
+                android:contentDescription="@string/show_on_map"
+                android:padding="12dp"
+                android:src="@drawable/ic_baseline_location_on_24"
+                android:text="@string/show_on_map"
+                android:visibility="@{model.loading ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                tools:ignore="ImageContrastCheck" />
 
             <View
+                android:id="@+id/view"
                 showTextToast="@{model.message}"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -122,13 +127,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <View
-                    android:id="@+id/view"
-                    showTextToast="@{model.message}"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:visibility="@{model.loading ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_anchor="@+id/constraintLayout"
+            app:layout_anchorGravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

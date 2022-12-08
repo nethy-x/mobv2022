@@ -44,7 +44,7 @@ class DataRepository private constructor(
                 }
             } catch (ex: IOException) {
                 ex.printStackTrace()
-                onError("Sign up failed, check internet connection")
+                onError("Sign up failed, check internet connection.")
                 onStatus(null)
             } catch (ex: Exception) {
                 ex.printStackTrace()
@@ -79,7 +79,7 @@ class DataRepository private constructor(
                 }
             } catch (ex: IOException) {
                 ex.printStackTrace()
-                onError("Login failed, check internet connection")
+                onError("Login failed, check internet connection.")
                 onStatus(null)
             } catch (ex: Exception) {
                 ex.printStackTrace()
@@ -106,7 +106,7 @@ class DataRepository private constructor(
                 }
             } catch (ex: IOException) {
                 ex.printStackTrace()
-                onError("Login failed, check internet connection")
+                onError("Login failed, check internet connection.")
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 onError("Login in failed, error.")
@@ -135,13 +135,13 @@ class DataRepository private constructor(
                         }
                         barsCache.deleteBars()
                         barsCache.insertBars(b)
-                    } ?: onError("Failed to load bars")
+                    } ?: onError("Failed to load bars.")
                 } else {
-                    onError("Failed to read bars")
+                    onError("Failed to read bars.")
                 }
             } catch (ex: IOException) {
                 ex.printStackTrace()
-                onError("Failed to load bars, check internet connection")
+                onError("Failed to load bars, check internet connection.")
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 onError("Failed to load bars, error.")
@@ -167,13 +167,13 @@ class DataRepository private constructor(
                             }
                         }
                         nearby = nearby.filter { it.name.isNotBlank() }.sortedBy { it.distance }
-                    } ?: onError("Failed to load bars")
+                    } ?: onError("Failed to load bars.")
                 } else {
-                    onError("Failed to read bars")
+                    onError("Failed to read bars.")
                 }
             } catch (ex: IOException) {
                 ex.printStackTrace()
-                onError("Failed to load bars, check internet connection")
+                onError("Failed to load bars, check internet connection.")
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 onError("Failed to load bars, error.")
@@ -204,13 +204,13 @@ class DataRepository private constructor(
                                 b.tags
                             )
                         }
-                    } ?: onError("Failed to load bars")
+                    } ?: onError("Failed to load bars.")
                 } else {
-                    onError("Failed to read bars")
+                    onError("Failed to read bars.")
                 }
             } catch (ex: IOException) {
                 ex.printStackTrace()
-                onError("Failed to load bars, check internet connection")
+                onError("Failed to load bars, check internet connection.")
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 onError("Failed to load bars, error.")
@@ -300,8 +300,6 @@ class DataRepository private constructor(
             }
         }
     }
-
-
 
     companion object{
         @Volatile

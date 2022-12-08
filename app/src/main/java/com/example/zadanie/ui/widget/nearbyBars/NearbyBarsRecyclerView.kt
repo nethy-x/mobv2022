@@ -10,21 +10,11 @@ import com.example.zadanie.ui.viewmodels.data.NearbyBar
 class NearbyBarsRecyclerView : RecyclerView {
     private lateinit var barsAdapter: NearbyBarsAdapter
     var events: NearbyBarsEvents? = null
-    /**
-     * Default constructor
-     *
-     * @param context context for the activity
-     */
+
     constructor(context: Context) : super(context) {
         init(context)
     }
 
-    /**
-     * Constructor for XML layout
-     *
-     * @param context activity context
-     * @param attrs   xml attributes
-     */
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context)
     }

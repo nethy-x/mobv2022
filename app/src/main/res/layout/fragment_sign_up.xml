@@ -29,14 +29,18 @@
                 android:layout_height="97dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="93dp"
+                android:contentDescription="@string/logo"
                 android:src="@drawable/logo" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading"
                 android:theme="@style/ProgressBarStyle"
                 android:layout_width="match_parent"
                 android:indeterminate="true"
                 android:layout_height="69dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading"
                 android:visibility="@{model.loading ? View.VISIBLE : View.INVISIBLE}" />
 
         </FrameLayout>
@@ -74,6 +78,7 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
+                android:contentDescription="@string/logo"
                 android:src="@drawable/username" />
 
         </RelativeLayout>
@@ -113,6 +118,7 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
+                android:contentDescription="@string/logo"
                 android:src="@drawable/pass" />
 
         </RelativeLayout>
@@ -151,6 +157,7 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
+                android:contentDescription="@string/logo"
                 android:src="@drawable/lock" />
 
         </RelativeLayout>
@@ -181,7 +188,7 @@
             android:padding="30dp"
             android:text="@string/or_log_in"
             android:textColor="#1566e0"
-            android:textSize="10.5sp" />
+            android:textSize="11sp" />
 
         <View
             showTextToast="@{model.message}"

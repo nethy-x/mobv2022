@@ -1,7 +1,5 @@
 package com.example.zadanie.data.api
 
-import com.google.gson.annotations.SerializedName
-
 data class UserResponse(
     val uid: String,
     val access: String,

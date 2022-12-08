@@ -19,17 +19,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class BarsFragment : Fragment() {
     private var _binding: FragmentBarsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewmodel: BarsViewModel
+    private lateinit var viewModel: BarsViewModel
     private lateinit var nav : NavController
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewmodel = ViewModelProvider(
+        viewModel = ViewModelProvider(
             this,
             Injection.provideViewModelFactory(requireContext())
-        ).get(BarsViewModel::class.java)
+        )[BarsViewModel::class.java]
         activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.visibility =
             View.VISIBLE
     }
@@ -55,7 +55,7 @@ class BarsFragment : Fragment() {
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            model = viewmodel
+            model = viewModel
             navController = nav
         }.also { bnd ->
             bnd.topAppBar.setNavigationOnClickListener { nav.popBackStack() }
@@ -71,35 +71,35 @@ class BarsFragment : Fragment() {
             }
 
             bnd.swiperefresh.setOnRefreshListener {
-                viewmodel.refreshData()
+                viewModel.refreshData()
             }
             bnd.chipSortDefault.setOnClickListener{
                 bnd.recycleView.scrollToPosition(0)
-                viewmodel.setSortBy(SortBy.DEFAULT)
+                viewModel.setSortBy(SortBy.DEFAULT)
                 bnd.chipSortCount.isChecked = false
                 bnd.chipSortName.isChecked = false
             }
             bnd.chipSortName.setOnClickListener{
                 bnd.recycleView.scrollToPosition(0)
-                viewmodel.setSortBy(SortBy.NAME)
+                viewModel.setSortBy(SortBy.NAME)
                 bnd.chipSortCount.isChecked = false
                 bnd.chipSortDefault.isChecked = false
 
             }
             bnd.chipSortCount.setOnClickListener{
                 bnd.recycleView.scrollToPosition(0)
-                viewmodel.setSortBy(SortBy.USERS)
+                viewModel.setSortBy(SortBy.USERS)
                 bnd.chipSortDefault.isChecked = false
                 bnd.chipSortName.isChecked = false
             }
 
         }
 
-        viewmodel.loading.observe(viewLifecycleOwner) {
+        viewModel.loading.observe(viewLifecycleOwner) {
             binding.swiperefresh.isRefreshing = it
         }
 
-        viewmodel.message.observe(viewLifecycleOwner) {
+        viewModel.message.observe(viewLifecycleOwner) {
             if (PreferenceData.getInstance().getUserItem(requireContext()) == null) {
                 nav.navigate(R.id.action_to_login)
             }

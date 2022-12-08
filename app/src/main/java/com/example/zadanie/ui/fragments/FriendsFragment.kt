@@ -26,14 +26,14 @@ class FriendsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this,
             Injection.provideViewModelFactory(requireContext())
-        ).get(FriendsViewModel::class.java)
+        )[FriendsViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFriendsBinding.inflate(inflater,container,false)
         return binding.root
     }

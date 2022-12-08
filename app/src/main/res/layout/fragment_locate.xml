@@ -34,7 +34,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -134,7 +134,8 @@
             app:layout_constraintBottom_toTopOf="@id/swiperefresh"
             />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swiperefresh"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -159,18 +160,6 @@
             />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/progressBar"-->
-<!--            android:layout_width="232dp"-->
-<!--            android:layout_height="273dp"-->
-<!--            android:visibility="@{model.loading ? View.VISIBLE : View.INVISIBLE}"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:lottie_autoPlay="true"-->
-<!--            app:lottie_rawRes="@raw/checkmap" />-->
-
         <View
             showTextToast="@{model.message}"
             android:layout_width="match_parent"
@@ -178,6 +167,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:visibility="@{model.loading ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_anchor="@+id/constraintLayout"
+            app:layout_anchorGravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

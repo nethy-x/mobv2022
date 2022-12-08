@@ -29,7 +29,7 @@ class SignUpFragment : Fragment() {
         authViewModel = ViewModelProvider(
             this,
             Injection.provideViewModelFactory(requireContext())
-        ).get(AuthViewModel::class.java)
+        )[AuthViewModel::class.java]
         activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.visibility =
             View.INVISIBLE
     }
