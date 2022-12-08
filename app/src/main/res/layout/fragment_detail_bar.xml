@@ -48,6 +48,7 @@
                 android:paddingBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:text="@{model.user.toString()}"
                 tools:text="Count" />
 
             <RelativeLayout
@@ -105,7 +106,6 @@
                 android:layout_height="wrap_content"
                 android:padding="12dp"
                 android:layout_marginBottom="50dp"
-
                 android:visibility="@{model.loading ? View.INVISIBLE : View.VISIBLE}"
                 android:text="@string/show_on_map"
                 android:src="@drawable/ic_baseline_location_on_24"
@@ -121,8 +121,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
                 <View
                     android:id="@+id/view"

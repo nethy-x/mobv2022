@@ -2,7 +2,6 @@ package com.example.zadanie.ui.widget.barlist
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,7 +36,7 @@ class BarsRecyclerView : RecyclerView {
         barsAdapter = BarsAdapter(object : BarsEvents {
             override fun onBarClick(bar: BarItem) {
                 this@BarsRecyclerView.findNavController().navigate(
-                    BarsFragmentDirections.actionToDetail(bar.id, bar.users.toString())
+                    BarsFragmentDirections.actionToDetail(bar.id)
                 )
             }
         })

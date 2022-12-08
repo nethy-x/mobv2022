@@ -34,9 +34,6 @@
         <argument
             android:name="id"
             app:argType="string" />
-        <argument
-            android:name="users"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/add_friend_fragment"

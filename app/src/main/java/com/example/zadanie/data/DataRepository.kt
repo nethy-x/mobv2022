@@ -1,5 +1,6 @@
 package com.example.zadanie.data
 
+import android.util.Log
 import com.example.zadanie.data.api.*
 import com.example.zadanie.data.db.dao.BarsDao
 import com.example.zadanie.data.db.dao.FriendsDao
@@ -216,6 +217,15 @@ class DataRepository private constructor(
             }
         }
         return nearby
+    }
+
+    suspend fun dbUsersByBarId(id: String) : Int {
+        var users: Int
+        withContext(Dispatchers.IO) {
+            users = barsCache.getUsersByBarId(id)
+            Log.i("users", users.toString())
+        }
+        return users
     }
 
     suspend fun dbBars(isAsc: Boolean, sortBy: SortBy?) : List<BarItem>? {

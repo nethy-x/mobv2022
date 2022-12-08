@@ -29,4 +29,8 @@ interface BarsDao {
             "CASE WHEN :isAsc = 0 THEN users END DESC")
     suspend fun getBarsUsers(isAsc: Boolean): List<BarItem>?
 
+    @Query("SELECT users FROM bars WHERE id= :id")
+    suspend fun getUsersByBarId(id: String): Int
+
+
 }

@@ -4,7 +4,6 @@ package com.example.zadanie.ui.fragments
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.zadanie.R
 import com.example.zadanie.databinding.FragmentDetailBarBinding
 import com.example.zadanie.utils.Injection
@@ -23,7 +21,6 @@ class BarDetailFragment : Fragment() {
     private var _binding: FragmentDetailBarBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: DetailViewModel
-    private val navigationArgs: BarDetailFragmentArgs by navArgs()
     private lateinit var nav : NavController
 
     private lateinit var id: String
@@ -88,6 +85,7 @@ class BarDetailFragment : Fragment() {
             }
         }
         viewModel.loadBar(id)
+        viewModel.getUsers(id)
     }
     override fun onDestroyView() {
         super.onDestroyView()
